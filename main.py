@@ -11,7 +11,7 @@ from sqlalchemy.orm import relationship
 # Import your forms from the forms.py
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 # Import configuration
-from configuraton import config
+from configuraton import FLASK_KEY, SQLALCHEMY
 '''
 Make sure the required packages are installed: 
 Open the Terminal in PyCharm (bottom left). 
@@ -26,7 +26,7 @@ This will install the packages from the requirements.txt for this project.
 '''
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = config['SECRET_KEY']
+app.config['SECRET_KEY'] = FLASK_KEY
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
@@ -46,7 +46,7 @@ gravatar = Gravatar(app,
                     base_url=None)
 
 # CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] =  config["SQLALCHEMY_DATABASE_URI"]
+app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY
 db = SQLAlchemy()
 db.init_app(app)
 
